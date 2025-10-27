@@ -1,10 +1,8 @@
 package com.lancamento.nota.domain.model;
 
 import com.lancamento.nota.contract.TableName;
-import com.lancamento.nota.domain.enums.TipoAcessoEnum;
 import com.lancamento.nota.domain.enums.TipoIdentificacaoEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -18,12 +16,20 @@ public class Dados extends BaseEntity{
     private String nome;
     private String contatoPrincipal;
     private String contatoSecundario;
-    private TipoAcessoEnum tipoAcessoEnum;
+
     private String morada;
+
     private String nomePai;
+
     private String nomeMae;
+
+    @Enumerated(EnumType.ORDINAL)
     private TipoIdentificacaoEnum tipoIdentificacaoEnum;
+
+    @Column(unique = true, name = "numero_documento")
     private String numeroDocumento;
-    private String email;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 }

@@ -16,13 +16,15 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String username;
     private String password;
+
+    @Column(unique = true)
     private String email;
     private boolean enabled = true;
 
     @Enumerated(EnumType.ORDINAL)
-    @Column(columnDefinition = "1")
     private TipoAcessoEnum TipoAcessoEnum;
 
     @ElementCollection(fetch = FetchType.EAGER)
