@@ -14,5 +14,4 @@ public class PageableOrdenado {
                 Sort.by("nome").ascending()
         );
     }
-
 }
