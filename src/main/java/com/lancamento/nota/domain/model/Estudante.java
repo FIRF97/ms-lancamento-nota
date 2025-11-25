@@ -1,8 +1,7 @@
 package com.lancamento.nota.domain.model;
 
 import com.lancamento.nota.contract.TableName;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,5 +12,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 public class Estudante extends BaseEntity{
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dados_id")
     private Dados dados;
 }
